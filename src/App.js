@@ -1,65 +1,51 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState } from "react";
+import { useData } from './utilities/firebase.js';
+import Button from "./components/Button";
+import Banner from "./components/Banner";
 
 
-const Banner = () => {
+
+
+const Content = ({ checkedIn, numPeople }) => {
+  // for purposes of demo:
+  // Low: 1 
+  // medium: 2
+  // high: 3
+
+  // actual expected values:
+  // low: <15
+  // medium: 15-40
+  // high: >40
   return (
-    <p>NU Covid Test Line Checker</p>
-  )
-};
-
-const Content = () => {
-  return (
-    <div>
-      <p>Jacobs Center Rapid Test - Covid-19</p>
-      <p>Low</p>
-      <p>Traffic</p>
-      <p>Approx. People in Line: </p>
-    </div>
-  )
-}
-
-const checkIn = () => {
-  console.log("Checked in");
-  // add to database
-  // pull from database to update num of people var
-}
-
-const checkOut = () => {
-  console.log("Checked out");
-  // add to database
-  // pull from database to update num of people var
-}
-
-const Button = () => {
-  const [checkedIn, setCheckedIn] = useState(false);
-
-  return (
-    checkedIn ?
-      <button onClick={() => {
-        setCheckedIn(false);
-        checkOut(setCheckedIn);
-      }
-      }>Check Out</button>
-      :
-      <button onClick={() => {
-        setCheckedIn(true);
-        checkIn(setCheckedIn);
-      }
-      }>Check In</button>
-
+    checkedIn ? 
+      <div>
+        <p>Jacobs Center Rapid Test - Covid-19</p>
+        <p>You're checked in! Don't forgot to check out!</p>
+      </div> :
+      <div>
+        <p>Jacobs Center Rapid Test - Covid-19</p>
+        <p>Low</p>
+        <p>Traffic</p>
+        <p>Approx. People in Line: {numPeople}</p>
+      </div>
   )
 }
-
 
 function App() {
+  const [checkedIn, setCheckedIn] = useState(false);
+
+  const [numPeople, loading, error] = useData('/numPeople'); 
+  
+  if (error) return <h1>{error}</h1>;
+  if (loading) return <h1>Loading the data...</h1>
 
   return (
     <div>
       <Banner />
-      <Content />
-      <Button />
+      <Content checkedIn={checkedIn} numPeople={numPeople}/>
+      <Button checkedIn={checkedIn} setCheckedIn={setCheckedIn} numPeople={numPeople}/>
     </div>
   );
 }
