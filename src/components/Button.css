@@ -3,7 +3,7 @@
 .btn {
     color: white;
     font-size: 2rem;
-    width: 30%;
+    width: 50%;
     height: 12%;
     margin: 10px 10px;
     padding: 20px 0;
@@ -19,7 +19,7 @@
 }
 
 .btn-checked-in {
-    background-color: #df8a29;
+    background-color: #a51212;
 }
 
 .btn-checked-out {
