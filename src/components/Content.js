@@ -14,7 +14,7 @@ const Content = ({ checkedIn, numPeople }) => {
       checkedIn ? 
         <div className='checkout_content'>
           <p>Jacobs Center Rapid Test - Covid-19</p>
-          <p className='checkedin_msg'>You're checked in! Don't forgot to check out!</p>
+          <p className='checkedin_msg'>You're checked in! Don't forget to check out!</p>
         </div> :
         <div className='checkin_content'>
           <p>Jacobs Center Rapid Test - Covid-19</p>
