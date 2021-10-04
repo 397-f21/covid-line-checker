@@ -4,17 +4,14 @@
     color: white;
     font-size: 2rem;
     width: 50%;
-    height: 12%;
     margin: 10px 10px;
     padding: 20px 0;
     border: none;
     border-radius: 5px;
-    -webkit-filter: brightness(100%);
 }
 
 .btn:hover {
     cursor: pointer;
-    -webkit-filter: brightness(70%);
     transition: 0.2s ease-out;
 }
 

@@ -12,7 +12,18 @@
 
 .checkin_content {
     margin-top: 40%;
+    margin-bottom: 30%;
     text-align: center;
+}
+
+.checkout_content {
+    margin-top: 40%;
+    margin-bottom: 60%;
+    text-align: center;
+}
+
+.checkedin_msg {
+    font-size: 30px;
 }
 
 .traffic {
@@ -28,6 +39,20 @@
         text-align: center;
         font-size: 25px;
         line-height: 0.5;
+        margin-bottom: 5%;
+    }
+
+    .checkout_content {
+        margin-top: 5%;
+        text-align: center;
+        font-size: 25px;
+        line-height: 0.5;
+        margin-bottom: 16%;
+    }
+
+    .checkedin_msg {
+        margin-top: 100px;
+        margin-bottom: 100px;
     }
 
     .traffic {
