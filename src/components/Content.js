@@ -12,9 +12,9 @@ const Content = ({ checkedIn, numPeople }) => {
     // high: >40
     return (
       checkedIn ? 
-        <div>
+        <div className='checkout_content'>
           <p>Jacobs Center Rapid Test - Covid-19</p>
-          <p>You're checked in! Don't forgot to check out!</p>
+          <p className='checkedin_msg'>You're checked in! Don't forgot to check out!</p>
         </div> :
         <div className='checkin_content'>
           <p>Jacobs Center Rapid Test - Covid-19</p>

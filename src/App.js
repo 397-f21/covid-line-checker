@@ -17,7 +17,7 @@ function App() {
   if (loading) return <h1>Loading the data...</h1>
 
   return (
-    <div>
+    <div className={checkedIn ? 'checkedIn' : 'checkedOut'}>
       <Banner />
       <Content checkedIn={checkedIn} numPeople={numPeople}/>
       <Button checkedIn={checkedIn} setCheckedIn={setCheckedIn} numPeople={numPeople}/>
