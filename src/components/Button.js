@@ -26,13 +26,13 @@ const Button = ({ checkedIn, setCheckedIn, numPeople }) => {
 
   return (
     checkedIn ?
-      <button onClick={() => {
+      <button className="btn btn-checked-in" onClick={() => {
         setCheckedIn(false);
         checkOut(numPeople);
       }
       }>Check Out</button>
       :
-      <button onClick={() => {
+      <button className="btn btn-checked-out" onClick={() => {
         setCheckedIn(true);
         checkIn(numPeople);
       }
