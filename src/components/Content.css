@@ -1,0 +1,46 @@
+.low {
+    color: rgb(2, 133, 2);
+}
+
+.medium{
+    color: rgb(211, 161, 25);
+}
+
+.high {
+    color: rgb(199, 17, 17);
+}
+
+.checkin_content {
+    margin-top: 40%;
+    text-align: center;
+}
+
+.traffic {
+    font-size:  50px;
+    letter-spacing: 2px;
+    line-height: 0.5;
+    text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+}
+
+@media (min-width:376px) {
+    .checkin_content {
+        margin-top: 5%;
+        text-align: center;
+        font-size: 25px;
+        line-height: 0.5;
+    }
+
+    .traffic {
+        display: flex; 
+        justify-content: center;
+        font-size:  90px;
+        text-indent: 20px;
+        letter-spacing: 2px;
+        line-height: 0.5;
+        text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+    }
+}
+
+
+
+
