@@ -19,9 +19,9 @@ const Content = ({ checkedIn, numPeople }) => {
         <div className='checkin_content'>
           <p>Jacobs Center Rapid Test - Covid-19</p>
           <div className='traffic'>
-          {numPeople < 10 
+          {numPeople < 15 
             ? <p className='low'>Low</p> 
-            : numPeople < 50 
+            : numPeople < 40 
             ? <p className='medium'>Medium</p> 
             : <p className='high'>High</p>}
           <p>Traffic</p>
