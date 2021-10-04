@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import './components/Button.css';
 import React, { useState } from "react";
 import { useData } from './utilities/firebase.js';
 import Button from "./components/Button";
