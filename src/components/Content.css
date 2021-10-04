@@ -39,6 +39,18 @@
         line-height: 0.5;
     }
 
+    .checkout_content {
+        margin-top: 5%;
+        text-align: center;
+        font-size: 25px;
+        line-height: 0.5;
+    }
+
+    .checkedin_msg {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
     .traffic {
         display: flex; 
         justify-content: center;
