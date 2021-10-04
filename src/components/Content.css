@@ -15,6 +15,15 @@
     text-align: center;
 }
 
+.checkout_content {
+    margin-top: 40%;
+    text-align: center;
+}
+
+.checkedin_msg {
+    font-size: 30px;
+}
+
 .traffic {
     font-size:  50px;
     letter-spacing: 2px;
