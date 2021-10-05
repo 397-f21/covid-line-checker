@@ -13,11 +13,11 @@ const Content = ({ checkedIn, numPeople }) => {
     return (
       checkedIn ? 
         <div className='checkout_content'>
-          <p>Jacobs Center Rapid Test - Covid-19</p>
-          <p className='checkedin_msg'>You're checked in! Don't forget to check out!</p>
+          <p className='test_location'>Jacobs Center Rapid Test - Covid-19</p>
+          <p className='checkedin_msg'>You're checked in! <br /> <br /> Don't forget to check out once you have completed your test.</p>
         </div> :
         <div className='checkin_content'>
-          <p>Jacobs Center Rapid Test - Covid-19</p>
+          <p className='test_location'>Jacobs Center Rapid Test - Covid-19</p>
           <div className='traffic'>
           {numPeople < 15 
             ? <p className='low'>Low</p> 
@@ -26,7 +26,7 @@ const Content = ({ checkedIn, numPeople }) => {
             : <p className='high'>High</p>}
           <p>Traffic</p>
           </div>
-          <p>Approx. People in Line: {numPeople}</p>
+          <p className='num_people'>Approx. People in Line: {numPeople}</p>
         </div>
     )
 }

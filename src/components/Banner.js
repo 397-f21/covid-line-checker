@@ -13,7 +13,7 @@ const Banner = () => {
                         />
                     </li>
                     <li className="topic">
-                        <span>NU Covid Test Line Checker</span>
+                        <span>NU Covid-19 Test Line Checker</span>
                     </li>
                 </ul>
             </div>
