@@ -18,7 +18,7 @@
 
 .checkout_content {
     margin-top: 40%;
-    margin-bottom: 60%;
+    margin-bottom: 30%;
     text-align: center;
 }
 
@@ -31,6 +31,14 @@
     letter-spacing: 2px;
     line-height: 0.5;
     text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+}
+
+.test_location{
+    font-size: 20px;
+}
+
+.num_people{
+    font-size: 20px;
 }
 
 @media (min-width:376px) {
