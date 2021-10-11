@@ -1,4 +1,6 @@
+import React from 'react';
 import './Content.css';
+import { useData } from '../utilities/firebase';
 
 const Content = ({ checkedIn, numPeople }) => {
     // for purposes of demo:
@@ -10,6 +12,10 @@ const Content = ({ checkedIn, numPeople }) => {
     // low: <15
     // medium: 15-40
     // high: >40
+    const [avgTime, loading, error] = useData('/avgTime');
+    const hrs = Math.floor(avgTime / 60);
+    const mins = Math.floor(avgTime % 60);
+
     return (
       checkedIn ? 
         <div className='checkout_content'>
@@ -19,14 +25,14 @@ const Content = ({ checkedIn, numPeople }) => {
         <div className='checkin_content'>
           <p className='test_location'>Jacobs Center Rapid Test - Covid-19</p>
           <div className='traffic'>
-          {numPeople < 15 
+          {avgTime < 15
             ? <p className='low'>Low</p> 
-            : numPeople < 40 
+            : avgTime < 45
             ? <p className='medium'>Medium</p> 
             : <p className='high'>High</p>}
           <p>Traffic</p>
           </div>
-          <p className='num_people'>Approx. People in Line: {numPeople}</p>
+          <p className='num_people'>Approx. Wait Time: <br /> {hrs} Hours and {mins} Minutes</p>
         </div>
     )
 }
