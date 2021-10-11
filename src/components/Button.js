@@ -1,34 +1,40 @@
 import React, { useState } from "react";
-import { setData } from "../utilities/firebase.js"
+import { setData, useData } from "../utilities/firebase.js"
 
 
 const checkIn = async (numPeople) => {
   try {
-    await setData("/numPeople", numPeople + 1);
-    console.log("Checked in");
+    numPeople += 1;
+    await setData("/numPeople", numPeople);
+    localStorage.setItem("userId", numPeople);
+    console.log("Checked in: ", Date.now());
+    await setData(`/${numPeople}/checkIn`, Date.now());
   }
   catch (error) {
     alert(error);
   }
 }
 
-const checkOut = async (numPeople) => {
+const checkOut = async (numPeople, update, setUpdate) => {
   try {
-    await setData("/numPeople", numPeople - 1);
-    console.log("Checked out");
+    await setData(`/${numPeople}/checkOut`, Date.now());
+    console.log("Checked out: ", Date.now());
+    setUpdate(update+1);
+    
   }
   catch (error) {
     alert(error);
   }
 }
 
-const Button = ({ checkedIn, setCheckedIn, numPeople }) => {
+
+const Button = ({ checkedIn, setCheckedIn, numPeople, setUpdate, update }) => {
 
   return (
     checkedIn ?
       <button className="btn btn-checked-in" onClick={() => {
         setCheckedIn(false);
-        checkOut(numPeople);
+        checkOut(numPeople, update, setUpdate);
       }
       }>Check Out</button>
       :
