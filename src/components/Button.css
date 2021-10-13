@@ -1,5 +1,3 @@
-/* Yemi's part */
-
 .btn {
     color: white;
     font-size: 2rem;
@@ -15,10 +13,20 @@
     transition: 0.2s ease-out;
 }
 
-.btn-checked-out {
+.btn-checked-out, .btn-fail {
     background-color: #a51212;
 }
 
 .btn-checked-in {
+    background-color: #4E2A84;
+}
+
+.btn-symptom {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.btn-yes, .btn-no {
     background-color: #4E2A84;
 }

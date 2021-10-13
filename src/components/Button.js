@@ -3,11 +3,11 @@ import { setData, useData } from "../utilities/firebase";
 import './Button.css'
 
 const checkIn = async (numPeople) => {
+    //isn't called until user clicks 'no' on symptom tracker page
     try {
         numPeople += 1;
         await setData("/numPeople", numPeople);
         localStorage.setItem("userId", numPeople);
-        console.log("Checked in: ", Date.now());
         await setData(`/${numPeople}/checkIn`, Date.now());
         // await setData(`/${numPeople}/checkOut`, 0);
     }
@@ -19,19 +19,54 @@ const checkIn = async (numPeople) => {
 const checkOut = async (numPeople, update, setUpdate) => {
     try {
         await setData(`/${numPeople}/checkOut`, Date.now());
-        console.log("Checked out: ", Date.now());
         setUpdate(update + 1);
-
+        
     }
     catch (error) {
         alert(error);
     }
 }
 
+const getButton = (status, setStatus, numPeople, update, setUpdate) => {
+    switch (status) {
+        case "checkIn":
+            return (
+                <button className="btn btn-checked-in" onClick={() => {
+                    setStatus("symptom");
+                }
+                }>Check In</button>
+            )
+        case "symptom":
+            return (
+                <div className="btn-symptom">
+                    <button className="btn btn-yes" onClick={() => {
+                        // move on to failure page
+                        setStatus("fail");
+                    }}> Yes </button>
+                    <button className="btn btn-no" onClick={() => {
+                        checkIn(numPeople);
+                        setStatus("checkOut");
+                    }}> No </button>
+                </div>
+            )
+        case "fail":
+            return (
+                <button className="btn btn-fail" onClick={() => {
+                    setStatus("checkIn");
+                }}> Ok </button>
+            )
+        case "checkOut":
+            return (
+                <button className="btn btn-checked-out" onClick={() => {
+                    setStatus("checkIn");
+                    checkOut(numPeople, update, setUpdate);
+                }
+                }>Check Out</button> 
+            )
+    }
+}
 
-
-// const Button = ({ checkedIn, setCheckedIn, numPeople, setUpdate, update }) => {
-const Button = ({ checkedIn, setCheckedIn, symptom, setSymptom, numPeople }) => {
+const Button = ({ status, setStatus, numPeople }) => {
     const [update, setUpdate] = useState(0);
     const [data, loadingData, errorData] = useData('/');
 
@@ -67,14 +102,32 @@ const Button = ({ checkedIn, setCheckedIn, symptom, setSymptom, numPeople }) => 
         let avgTime = (total / (count * 60000));
         console.log("Average Time:", avgTime);
         setData(`/avgTime`, avgTime);
+        localStorage.removeItem("userId");
 
     }, [update]);
 
     if (errorData) return <h1>{errorData}</h1>;
     if (loadingData) return <h1>Loading the data...</h1>;
 
+
+    // CheckedIn        Symptom
+    // true             false       they failed so show failure screen
+    // true             true        they passed and were checked in so show check out screen
+    // false            false       on check in screen
+    // false            true        on symptom screen 
+
+
+
     return (
-        checkedIn ?
+        <>
+            {getButton(status, setStatus, numPeople, update, setUpdate)}
+        </>
+    )
+}
+
+/* 
+
+checkedIn ?
           symptom ? 
             <button className="btn btn-checked-out" onClick={() => {
               setCheckedIn(false);
@@ -84,18 +137,21 @@ const Button = ({ checkedIn, setCheckedIn, symptom, setSymptom, numPeople }) => 
             }>Check Out</button>
             :
               <div><button onClick={()=>{
-                setSymptom(true);
+                // move on to failure page
+                setSymptom(false);
+                setCheckedIn(true);
               }}> Yes </button>
               <button onClick={()=>{
                 setSymptom(true);
+                //setCheckedIn(true);
+                checkIn(numPeople);
               }}> No </button></div>
           :
           <button className="btn btn-checked-in" onClick={() => {
             setCheckedIn(true);
-            checkIn(numPeople);
+            //checkIn(numPeople);
           }
           }>Check In</button>
-    )
-}
+*/
 
 export default Button;

@@ -6,7 +6,18 @@ body {
     height: 100%;
 }
 
-.checkedIn {
+.checkIn, .symptom {
+    background-color: white;
+    height: 100%;
+}
+
+.fail {
     background-color: #ffe499;
+    height: 100%;
+}
+
+.checkOut {
+    background-color: #25be01;
+    /* background-color: #57ff2e; */
     height: 100%;
 }

@@ -7,9 +7,16 @@ import { useData, setData } from './utilities/firebase.js';
 
 
 const App = () => {
-  const [symptom, setSymptom] = useState(false);
+  //const [symptom, setSymptom] = useState(false);
   const [data, loadingData, errorData] = useData('/');
-  const [checkedIn, setCheckedIn] = useState(false);
+  //const [checkedIn, setCheckedIn] = useState(false);
+  
+  const [status, setStatus] = useState("checkIn");
+  //checkIn - show check in screen
+  //symptom - show symptom tracker screen
+  //fail - show failure screen
+  //checkOut - show checkout screen
+  
   const [numPeople, loading, error] = useData('/numPeople');
 
   if (errorData) return <h1>{errorData}</h1>;
@@ -19,17 +26,15 @@ const App = () => {
   if (loading) return <h1>Loading the data...</h1>;
 
   const userId = localStorage.getItem("userId");
-  console.log(userId)
-  let alreadyCheckIn = false
-  if (userId != null && data[userId]["checkOut"] == null) {
-    alreadyCheckIn = true
+  if (userId != null && data[userId]["checkOut"] == null && status != "checkOut") {
+    setStatus("checkOut");
   }
 
   return (
-    <div className={alreadyCheckIn ? 'checkedIn' : 'checkedOut'}>
+    <div className={status}>
       <Banner />
-      <Content checkedIn={alreadyCheckIn} numPeople={numPeople} symptom={symptom}/>
-      <Button checkedIn={alreadyCheckIn} setCheckedIn={setCheckedIn} symptom={symptom} setSymptom={setSymptom} numPeople={numPeople} />
+      <Content status={status}/>
+      <Button status={status} setStatus={setStatus} numPeople={numPeople} />
     </div>
   );
 }
