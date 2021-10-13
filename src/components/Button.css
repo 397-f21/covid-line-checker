@@ -15,10 +15,10 @@
     transition: 0.2s ease-out;
 }
 
-.btn-checked-in {
+.btn-checked-out {
     background-color: #a51212;
 }
 
-.btn-checked-out {
+.btn-checked-in {
     background-color: #4E2A84;
 }

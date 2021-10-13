@@ -10,6 +10,7 @@ import Content from "./components/Content";
 
 function App() {
   const [checkedIn, setCheckedIn] = useState(false);
+  const [symptom, setSymptom] = useState(false);
   const [update, setUpdate] = useState(0);
   const [data, loadingData, errorData] = useData('/');
   const [numPeople, loading, error] = useData('/numPeople');
@@ -56,8 +57,8 @@ function App() {
   return (
     <div className={checkedIn ? 'checkedIn' : 'checkedOut'}>
       <Banner />
-      <Content checkedIn={checkedIn} numPeople={numPeople} />
-      <Button checkedIn={checkedIn} setCheckedIn={setCheckedIn} numPeople={numPeople} setUpdate={setUpdate} update={update} />
+      <Content checkedIn={checkedIn} numPeople={numPeople} symptom={symptom}/>
+      <Button checkedIn={checkedIn} setCheckedIn={setCheckedIn} symptom={symptom} setSymptom={setSymptom} numPeople={numPeople} setUpdate={setUpdate} update={update} />
     </div>
   );
 }

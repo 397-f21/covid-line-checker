@@ -28,17 +28,22 @@ const checkOut = async (numPeople, update, setUpdate) => {
 }
 
 
-const Button = ({ checkedIn, setCheckedIn, numPeople, setUpdate, update }) => {
+const Button = ({ checkedIn, setCheckedIn, symptom, setSymptom, numPeople, setUpdate, update }) => {
 
   return (
     checkedIn ?
-      <button className="btn btn-checked-in" onClick={() => {
-        setCheckedIn(false);
-        checkOut(numPeople, update, setUpdate);
-      }
-      }>Check Out</button>
+      symptom ? 
+        <button className="btn btn-checked-out" onClick={() => {
+          setCheckedIn(false);
+          checkOut(numPeople, update, setUpdate);
+        }
+        }>Check Out</button>
+        :
+        <button onClick={()=>{
+          setSymptom(true);
+        }}> Submit </button>
       :
-      <button className="btn btn-checked-out" onClick={() => {
+      <button className="btn btn-checked-in" onClick={() => {
         setCheckedIn(true);
         checkIn(numPeople);
       }

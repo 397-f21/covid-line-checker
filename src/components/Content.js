@@ -1,8 +1,8 @@
 import React from 'react';
 import './Content.css';
 import { useData } from '../utilities/firebase';
-
-const Content = ({ checkedIn, numPeople }) => {
+import Symptom from './Symptom';
+const Content = ({ checkedIn, symptom}) => {
     // for purposes of demo:
     // Low: 1 
     // medium: 2
@@ -18,10 +18,17 @@ const Content = ({ checkedIn, numPeople }) => {
 
     return (
       checkedIn ? 
-        <div className='checkout_content'>
+        symptom?
+          // haveSymptom?
+          // <div className>
+          // :
+          <div className='checkout_content'>
           <p className='test_location'>Jacobs Center Rapid Test - Covid-19</p>
           <p className='checkedin_msg'>You're checked in! <br /> <br /> Don't forget to check out once you have completed your test.</p>
-        </div> :
+         </div>
+          :
+          <Symptom></Symptom>
+        :
         <div className='checkin_content'>
           <p className='test_location'>Jacobs Center Rapid Test - Covid-19</p>
           <div className='traffic'>
