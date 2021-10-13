@@ -36,12 +36,16 @@ const Button = ({ checkedIn, setCheckedIn, symptom, setSymptom, numPeople, setUp
         <button className="btn btn-checked-out" onClick={() => {
           setCheckedIn(false);
           checkOut(numPeople, update, setUpdate);
+          setSymptom(false);
         }
         }>Check Out</button>
         :
-        <button onClick={()=>{
-          setSymptom(true);
-        }}> Submit </button>
+          <div><button onClick={()=>{
+            setSymptom(true);
+          }}> Yes </button>
+          <button onClick={()=>{
+            setSymptom(true);
+          }}> No </button></div>
       :
       <button className="btn btn-checked-in" onClick={() => {
         setCheckedIn(true);

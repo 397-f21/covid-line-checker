@@ -17,9 +17,6 @@ const Symptom = () =>{
                         <li>New headache, neck ache or muscle pain not related to physical activity</li>
                         <li>More than one episode of vomiting or diarrhea</li>
                     </ul>
-                    
-                    <label><input type="checkbox" id="yes"/>Yes</label>
-                    <label for="no"><input type="checkbox" id="no"/>no</label>
             </div>
         </>
     )
