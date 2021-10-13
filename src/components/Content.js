@@ -7,12 +7,14 @@ const Content = ({ checkedIn, symptom}) => {
     // Low: 1 
     // medium: 2
     // high: 3
-  
+
     // actual expected values:
     // low: <15
     // medium: 15-40
     // high: >40
     const [avgTime, loading, error] = useData('/avgTime');
+    if (error) return <h1>{error}</h1>;
+    if (loading) return <h1>Loading the data...</h1>;
     const hrs = Math.floor(avgTime / 60);
     const mins = Math.floor(avgTime % 60);
 
