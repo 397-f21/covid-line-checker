@@ -7,7 +7,7 @@ const Content = ({ checkedIn, numPeople }) => {
     // Low: 1 
     // medium: 2
     // high: 3
-  
+
     // actual expected values:
     // low: <15
     // medium: 15-40
@@ -17,23 +17,23 @@ const Content = ({ checkedIn, numPeople }) => {
     const mins = Math.floor(avgTime % 60);
 
     return (
-      checkedIn ? 
-        <div className='checkout_content'>
-          <p className='test_location'>Jacobs Center Rapid Test - Covid-19</p>
-          <p className='checkedin_msg'>You're checked in! <br /> <br /> Don't forget to check out once you have completed your test.</p>
-        </div> :
-        <div className='checkin_content'>
-          <p className='test_location'>Jacobs Center Rapid Test - Covid-19</p>
-          <div className='traffic'>
-          {avgTime < 15
-            ? <p className='low'>Low</p> 
-            : avgTime < 45
-            ? <p className='medium'>Medium</p> 
-            : <p className='high'>High</p>}
-          <p>Traffic</p>
-          </div>
-          <p className='num_people'>Approx. Wait Time: <br /> {hrs} Hours and {mins} Minutes</p>
-        </div>
+        checkedIn ?
+            <div className='checkout_content'>
+                <p className='test_location'>Jacobs Center Rapid Test - Covid-19</p>
+                <p className='checkedin_msg'>You're checked in! <br /> <br /> Don't forget to check out once you have completed your test.</p>
+            </div> :
+            <div className='checkin_content'>
+                <p className='test_location'>Jacobs Center Rapid Test - Covid-19</p>
+                <div className='traffic'>
+                    {mins < 15
+                        ? <p className='low'>Low</p>
+                        : mins < 45
+                            ? <p className='medium'>Medium</p>
+                            : <p className='high'>High</p>}
+                    <p>Traffic</p>
+                </div>
+                <p className='num_people'>Approx. Wait Time: <br /> {hrs} Hours and {mins} Minutes</p>
+            </div>
     )
 }
 
