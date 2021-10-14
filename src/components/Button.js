@@ -5,10 +5,9 @@ import './Button.css'
 const checkIn = async (numPeople) => {
     //isn't called until user clicks 'no' on symptom tracker page
     try {
-        numPeople += 1;
-        await setData("/numPeople", numPeople);
-        localStorage.setItem("userId", numPeople);
-        await setData(`/${numPeople}/checkIn`, Date.now());
+        await setData("/numPeople", numPeople+1);
+        localStorage.setItem("userId", numPeople ? numPeople : 0);
+        await setData(`/${localStorage.getItem("userId")}/checkIn`, Date.now());
         // await setData(`/${numPeople}/checkOut`, 0);
     }
     catch (error) {
@@ -18,7 +17,7 @@ const checkIn = async (numPeople) => {
 
 const checkOut = async (numPeople, update, setUpdate) => {
     try {
-        await setData(`/${numPeople}/checkOut`, Date.now());
+        await setData(`/${localStorage.getItem("userId")}/checkOut`, Date.now());
         setUpdate(update + 1);
         
     }
