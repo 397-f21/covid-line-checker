@@ -79,7 +79,7 @@ const Button = ({ status, setStatus, numPeople }) => {
         let checkoutTime = data[userId]["checkOut"];
         console.log("checkoutTime:", checkoutTime);
         let milisec_in_minute = 60000;
-        let x = 2 * milisec_in_minute;
+        let x = 60 * milisec_in_minute;
         let minTime = checkoutTime - x;
         console.log("minTime", minTime);
         let total = (checkoutTime - checkinTime);
